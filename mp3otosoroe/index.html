@@ -1,21 +1,58 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MP3オトソロエ｜harissa-lab</title>
-<style>body{margin:0;background:#f6f7fb;color:#222;font-family:"BIZ UDPGothic","BIZ UDPゴシック","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
-main{max-width:760px;margin:0 auto;padding:40px 20px 60px;background:#fff;min-height:100vh;box-sizing:border-box}
-h1{font-size:28px;border-bottom:4px solid #009490;padding-bottom:8px;margin-top:0}h2{font-size:20px;color:#00706c;border-left:5px solid #ea6e8e;padding-left:10px;margin-top:32px}
-h3{font-size:18px;color:#00706c;margin-top:28px;border-left:5px solid #ea6e8e;padding-left:10px}
-a{color:#009490}.app{border:1px solid #e3e6ea;border-radius:12px;padding:12px 18px;margin:16px 0}.app h2{margin-top:8px}.small{font-size:14px;color:#666}
-.pp-date{color:#666;font-size:14px}ul{padding-left:1.3em}li{margin:.3em 0}img.icon{width:96px;height:96px;border-radius:22px;float:right;margin:0 0 10px 16px}</style></head>
-<body><main>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1120;--surface:#0f172a;--border:rgba(148,163,184,.14);--border-strong:rgba(148,163,184,.28);--text:#f1f5f9;--body:#cbd5e1;--muted:#94a3b8;--subtle:#64748b;--accent:#ff5a3d;--link:#ff7a5c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);font-family:"BIZ UDPGothic","BIZ UDPゴシック","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.site-header{position:sticky;top:0;z-index:10;background:rgba(11,17,32,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.site-header .inner{max-width:960px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.site-header .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem;color:var(--text)}
+.site-header .brand img{width:26px}
+.site-header nav a{font-size:.9rem;color:var(--muted)}
+.site-header a:hover{color:var(--text);text-decoration:none}
+main{max-width:760px;margin:0 auto;padding:28px 24px 56px}
+main > p:first-child{font-size:.85rem;color:var(--subtle);margin:0 0 24px}
+main > p:first-child a{color:var(--muted)}
+main > p:first-child a:hover{color:var(--text);text-decoration:none}
+h1,main > h2{font-size:1.9rem;line-height:1.3;font-weight:700;color:var(--text);margin:0 0 20px;padding:0 0 16px;border:0;border-bottom:1px solid var(--border)}
+h2{font-size:1.2rem;color:var(--text);margin:32px 0 8px}
+h3{font-size:1.02rem;font-weight:700;color:var(--text);margin:32px 0 8px;padding-left:12px;border-left:3px solid var(--accent)}
+p{margin:0 0 14px}
+b,strong{color:var(--text)}
+.small,.pp-date{font-size:.85rem;color:var(--muted)}
+ul{padding-left:1.3em;margin:0 0 16px}
+li{margin:.35em 0}
+li::marker{color:var(--subtle)}
+img.icon{display:block;width:80px;height:80px;border-radius:18px;border:1px solid var(--border);margin:0 0 20px}
+a.btn,a[href*="play.google.com"]{display:inline-flex;align-items:center;height:40px;padding:0 18px;margin:4px 0;background:var(--accent);color:#fff;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none}
+a.btn:hover,a[href*="play.google.com"]:hover{background:#ff4524;text-decoration:none}
+.site-footer{border-top:1px solid var(--border);font-size:.82rem;color:var(--subtle)}
+.site-footer .inner{max-width:960px;margin:0 auto;padding:24px}
+@media(max-width:600px){h1,main > h2{font-size:1.6rem}main{padding:24px 20px 48px}}
+</style></head>
+<body>
+<header class="site-header"><div class="inner">
+<a href="../" class="brand"><img src="../harissa-lab_mark_transparent.png" alt="">Harissa Lab</a>
+<nav><a href="../#products">Products</a></nav>
+</div></header>
+<main>
 <p class="small"><a href="../">← harissa-lab</a></p>
 <img class="icon" src="icon.png" alt="">
 <h1>MP3オトソロエ</h1>
-<p>スマホの中の MP3 の音量を測って、同じ大きさにそろえる音量調整専用アプリです（Android）。MP3 の中の「音量の値」だけを書き換えるので、音質はそのまま（無劣化）。元のファイルは残し、「曲名_調整.mp3」として保存します。<br>
-<span class="small">MP3 Leveler — evens out the volume of the MP3s on your phone, losslessly. Your original files are kept.</span></p>
+<p>スマホの中の MP3 の音量を測って、同じ大きさにそろえる音量調整専用アプリです（Android）。MP3 の中の「音量の値」だけを書き換えるので、音質はそのまま（無劣化）。ファイル名・場所はそのままで、いつでも元に戻せます。<br>
+<span class="small">MP3 Leveler — evens out the volume of the MP3s on your phone, losslessly. Same file names and places, and you can always undo.</span></p>
 <ul>
 <li><a href="https://play.google.com/store/apps/details?id=harissa.volumesoroe.app">Google Play で見る</a>（公開後に有効）</li>
 <li><a href="privacy.html">プライバシーポリシー</a>（<a href="privacy-en.html">Privacy Policy (English)</a>）</li>
 </ul>
 <p>お問い合わせは、Google Play のストアページに記載の連絡先までお願いします。<br>
 <span class="small">For inquiries, please use the contact information on the Google Play store page.</span></p>
-</main></body></html>
+</main>
+<footer class="site-footer"><div class="inner">&copy; 2026 Harissa Lab</div></footer>
+</body></html>
