@@ -1,23 +1,471 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>harissa-lab</title>
-<style>body{margin:0;background:#f6f7fb;color:#222;font-family:"BIZ UDPGothic","BIZ UDPゴシック","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
-main{max-width:760px;margin:0 auto;padding:40px 20px 60px;background:#fff;min-height:100vh;box-sizing:border-box}
-h1{font-size:28px;border-bottom:4px solid #009490;padding-bottom:8px;margin-top:0}h2{font-size:20px;color:#00706c;border-left:5px solid #ea6e8e;padding-left:10px;margin-top:32px}
-a{color:#009490}.app{border:1px solid #e3e6ea;border-radius:12px;padding:12px 18px;margin:16px 0}.app h2{margin-top:8px}.small{font-size:14px;color:#666}</style></head>
-<body><main>
-<h1>harissa-lab</h1>
-<p>個人でスマートフォンアプリを開発しています。</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harissa Lab — Independent Software Studio</title>
+<meta name="description" content="Harissa Lab is an independent software studio creating simple and practical applications for everyday life.">
 
-<!-- ▼ アプリを追加するときは、この <div class="app">…</div> をコピーして中身を書きかえる -->
-<div class="app">
-<h2>すまいるチャレンジ！</h2>
-<p>せんせいのまねをして表情を動かす、カメラを使ったゲーム＆トレーニングアプリです（Android）。</p>
-<ul>
-<li><a href="smilechallenge/">アプリの紹介</a></li>
-<li><a href="smilechallenge/privacy.html">プライバシーポリシー</a>（<a href="smilechallenge/privacy-en.html">English</a>）</li>
-</ul>
-</div>
-<!-- ▲ ここまで -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 
-<p class="small">お問い合わせは、各アプリの「設定」画面にある「ご意見・お問い合わせ」からお送りください。</p>
-</main></body></html>
+<style>
+:root{
+    --bg:#0b1120;
+    --bg-2:#0f172a;
+    --surface:#1e293b;
+    --border:rgba(148,163,184,.14);
+    --border-strong:rgba(148,163,184,.28);
+    --text:#f1f5f9;
+    --muted:#94a3b8;
+    --subtle:#64748b;
+    --accent:#ff5a3d;
+    --accent-2:#ff8a3d;
+    --max:960px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+    font-family:"BIZ UDPGothic", sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+.container{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+}
+
+/* ---------- Header ---------- */
+.header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(11,17,32,.75);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    font-size:.95rem;
+}
+
+.brand img{ width:26px; }
+
+.nav{
+    display:flex;
+    gap:24px;
+    font-size:.9rem;
+    color:var(--muted);
+}
+
+.nav a:hover{ color:var(--text); }
+
+/* ---------- Hero ---------- */
+.hero{
+    position:relative;
+    padding:64px 0 56px;
+    text-align:center;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,90,61,.14), transparent 70%),
+        var(--bg);
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+}
+
+/* subtle grid */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+    opacity:.5;
+    pointer-events:none;
+}
+
+.hero > .container{ position:relative; }
+
+.hero-logo{
+    width:160px;
+    margin-bottom:20px;
+}
+
+.eyebrow{
+    display:inline-block;
+    padding:4px 12px;
+    margin-bottom:16px;
+    border:1px solid var(--border-strong);
+    border-radius:999px;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    color:var(--muted);
+    background:rgba(15,23,42,.6);
+}
+
+.hero h1{
+    font-size:3rem;
+    line-height:1.15;
+    font-weight:700;
+    letter-spacing:-.01em;
+    margin-bottom:12px;
+}
+
+.hero .lead{
+    font-size:1.1rem;
+    color:var(--muted);
+    margin-bottom:28px;
+}
+
+.hero .lead strong{
+    color:var(--text);
+    font-weight:400;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    height:42px;
+    padding:0 20px;
+    border-radius:8px;
+    font-size:.92rem;
+    font-weight:700;
+    transition:background .15s, border-color .15s, color .15s;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:#fff;
+}
+
+.btn-primary:hover{ background:#ff4524; }
+
+.btn-ghost{
+    border:1px solid var(--border-strong);
+    color:var(--text);
+}
+
+.btn-ghost:hover{
+    border-color:var(--muted);
+    background:rgba(148,163,184,.08);
+}
+
+/* ---------- Sections ---------- */
+.section{
+    padding:56px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.section-label{
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+}
+
+.section-title{
+    font-size:1.6rem;
+    font-weight:700;
+    margin-bottom:24px;
+}
+
+/* ---------- About ---------- */
+.about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:40px;
+    align-items:start;
+}
+
+.about-text{
+    font-size:1.05rem;
+    color:#cbd5e1;
+    line-height:1.9;
+}
+
+.facts{
+    list-style:none;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--bg-2);
+}
+
+.facts li{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:12px 18px;
+    font-size:.9rem;
+}
+
+.facts li + li{ border-top:1px solid var(--border); }
+
+.facts span:first-child{ color:var(--subtle); }
+
+/* ---------- Products ---------- */
+.products-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.products-head .section-title{ margin-bottom:0; }
+
+.products-head .count{
+    font-size:.85rem;
+    color:var(--subtle);
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.product{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(30,41,59,.7), rgba(15,23,42,.7));
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+}
+
+.product:hover{
+    border-color:rgba(255,90,61,.55);
+    transform:translateY(-2px);
+    box-shadow:0 8px 30px -12px rgba(255,90,61,.35);
+}
+
+.product-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:14px;
+}
+
+.product-icon{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    flex-shrink:0;
+    border:1px solid var(--border);
+}
+
+.product-name{
+    font-size:1.05rem;
+    font-weight:700;
+    line-height:1.3;
+}
+
+.product-tag{
+    display:inline-block;
+    margin-top:4px;
+    font-size:.72rem;
+    color:var(--muted);
+    padding:1px 8px;
+    border:1px solid var(--border);
+    border-radius:999px;
+}
+
+.product-desc{
+    font-size:.9rem;
+    color:var(--muted);
+    flex-grow:1;
+}
+
+.product-link{
+    margin-top:16px;
+    font-size:.85rem;
+    color:var(--subtle);
+    transition:color .2s;
+}
+
+.product-link .arrow{
+    display:inline-block;
+    transition:transform .2s;
+}
+
+.product:hover .product-link{ color:var(--accent); }
+.product:hover .arrow{ transform:translateX(3px); }
+
+/* ---------- Footer ---------- */
+.footer{
+    padding:24px 0;
+    font-size:.82rem;
+    color:var(--subtle);
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.footer a:hover{ color:var(--text); }
+
+/* ---------- Responsive ---------- */
+@media (max-width:820px){
+    .product-grid{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; gap:24px; }
+}
+
+@media (max-width:600px){
+    .nav{ gap:16px; }
+    .hero{ padding:44px 0 40px; }
+    .hero-logo{ width:140px; margin-bottom:16px; }
+    .hero h1{ font-size:2.2rem; }
+    .hero .lead{ font-size:1rem; }
+    .section{ padding:44px 0; }
+    .section-title{ font-size:1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="#" class="brand">
+            <img src="harissa-lab_mark_transparent.png" alt="">
+            Harissa Lab
+        </a>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="container">
+        <img src="harissa-lab_mark_transparent.png" alt="Harissa Lab" class="hero-logo">
+        <div><span class="eyebrow">Independent Software Studio</span></div>
+        <h1>Harissa Lab</h1>
+        <p class="lead"><strong>Mobile Apps &amp; Software Development.</strong><br>Simple Apps, Useful Ideas.</p>
+        <div class="actions">
+            <a href="#products" class="btn btn-primary">View Products <span>→</span></a>
+            <a href="#about" class="btn btn-ghost">About</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="container">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Small studio, practical software.</h2>
+        <div class="about-grid">
+            <p class="about-text">
+                Harissa Lab is an independent software studio creating simple and practical applications for everyday life.
+            </p>
+            <ul class="facts">
+                <li><span>Focus</span><span>Mobile Apps &amp; Software</span></li>
+                <li><span>Platform</span><span>Android</span></li>
+                <li><span>Products</span><span>3</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="products">
+    <div class="container">
+        <p class="section-label">Products</p>
+        <div class="products-head">
+            <h2 class="section-title">Our Products</h2>
+            <span class="count">3 apps</span>
+        </div>
+
+        <div class="product-grid">
+
+            <a href="smilechallenge/" class="product">
+                <div class="product-top">
+                    <img src="icons/smilechallenge.png" alt="" class="product-icon">
+                    <div>
+                        <div class="product-name">Smile Challenge!</div>
+                        <span class="product-tag">Android</span>
+                    </div>
+                </div>
+                <p class="product-desc">Facial expression game.</p>
+                <span class="product-link">Learn more <span class="arrow">→</span></span>
+            </a>
+
+            <a href="djasobi/" class="product">
+                <div class="product-top">
+                    <img src="icons/djasobi.png" alt="" class="product-icon">
+                    <div>
+                        <div class="product-name">DJ Asobi</div>
+                        <span class="product-tag">Android</span>
+                    </div>
+                </div>
+                <p class="product-desc">Scratch and mix on two turntables.</p>
+                <span class="product-link">Learn more <span class="arrow">→</span></span>
+            </a>
+
+            <a href="mp3otosoroe/" class="product">
+                <div class="product-top">
+                    <img src="icons/mp3otosoroe.png" alt="" class="product-icon">
+                    <div>
+                        <div class="product-name">MP3 Leveler</div>
+                        <span class="product-tag">Android</span>
+                    </div>
+                </div>
+                <p class="product-desc">Even out MP3 volume, losslessly.</p>
+                <span class="product-link">Learn more <span class="arrow">→</span></span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <span>&copy; 2026 Harissa Lab</span>
+        <a href="privacy.html">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
