@@ -34,6 +34,22 @@ a.btn,a[href*="play.google.com"]{display:inline-flex;align-items:center;height:4
 a.btn:hover,a[href*="play.google.com"]:hover{background:#ff4524;text-decoration:none}
 .site-footer{border-top:1px solid var(--border);font-size:.82rem;color:var(--subtle)}
 .site-footer .inner{max-width:960px;margin:0 auto;padding:24px}
+.tester{margin:32px 0;padding:24px;border:1px solid rgba(255,90,61,.35);border-radius:12px;background:linear-gradient(180deg,rgba(255,90,61,.08),rgba(15,23,42,.6))}
+.tester .tester-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.tester h2{font-size:1.35rem;margin:0 0 10px;padding:0;border:0}
+.tester h3{margin:24px 0 8px}
+.tester .steps{list-style:none;padding:0;margin:0 0 16px;counter-reset:step}
+.tester .steps li{counter-increment:step;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;margin:8px 0;border:1px solid var(--border);border-radius:10px;background:rgba(11,17,32,.6)}
+.tester .step-text{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:.92rem}
+.tester .step-text::before{content:counter(step);display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;flex-shrink:0}
+.tester .step-text strong{color:var(--text)}
+.tester .steps a{flex-shrink:0;display:inline-flex;align-items:center;height:34px;padding:0 14px;margin:0;border:1px solid var(--border-strong);border-radius:8px;background:transparent;color:var(--text);font-size:.85rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.tester .steps a:hover{border-color:var(--accent);background:rgba(255,90,61,.12);text-decoration:none}
+.tester details{margin-top:12px;font-size:.88rem}
+.tester summary{cursor:pointer;color:var(--muted)}
+.tester summary:hover{color:var(--text)}
+.tester details ul{margin-top:8px}
+@media(max-width:600px){.tester{padding:20px 16px}.tester .steps li{flex-direction:column;align-items:flex-start}.tester .steps a{margin-left:34px}}
 @media(max-width:600px){h1,main > h2{font-size:1.6rem}main{padding:24px 20px 48px}}
 </style></head>
 <body>
@@ -47,6 +63,32 @@ a.btn:hover,a[href*="play.google.com"]:hover{background:#ff4524;text-decoration:
 <h1>MP3オトソロエ</h1>
 <p>スマホの中の MP3 の音量を測って、同じ大きさにそろえる音量調整専用アプリです（Android）。MP3 の中の「音量の値」だけを書き換えるので、音質はそのまま（無劣化）。ファイル名・場所はそのままで、いつでも元に戻せます。<br>
 <span class="small">MP3 Leveler — evens out the volume of the MP3s on your phone, losslessly. Same file names and places, and you can always undo.</span></p>
+<section class="tester" id="tester">
+<p class="tester-label">Testers Wanted</p>
+<h2>テスター募集中</h2>
+<p>Google Play での一般公開に向けて、14日間のテストに参加してくださる方を募集しています。</p>
+<p class="small">We're looking for Android testers for a 14-day closed test.</p>
+<h3>参加の条件</h3>
+<ul>
+<li>Android のスマホ・タブレットをお持ちの方（iPhone は対象外です）</li>
+<li>14日間、アプリをアンインストールせずにいていただける方</li>
+<li>インストールして、ときどき開いていただくだけで大丈夫です。MP3 が無くても、入れておいていただくだけで助かります</li>
+</ul>
+<h3>参加方法</h3>
+<ol class="steps">
+<li><span class="step-text"><strong>Google グループに参加する</strong></span><a href="https://groups.google.com/g/harissa-lab-test">グループを開く</a></li>
+<li><span class="step-text"><strong>テストに参加する</strong>「テスターになる」を押します</span><a href="https://play.google.com/apps/testing/harissa.volumesoroe.app">テスト参加ページ</a></li>
+<li><span class="step-text"><strong>Play ストアからインストールする</strong></span><a href="https://play.google.com/store/apps/details?id=harissa.volumesoroe.app">Play ストアを開く</a></li>
+</ol>
+<p class="small">※ ①〜③は、Play ストアで使っている Google アカウントで行ってください。<br>※ アプリは無料です。</p>
+<details>
+<summary>うまくいかないとき</summary>
+<ul>
+<li>「このアプリは利用できません」と出る：Google グループに参加したアカウントと、Play ストアのアカウントが違います。Play ストア右上のアイコンでアカウントを切りかえてください。</li>
+<li>「テスターになる」が出ない：①のグループに参加してから、少し時間をおいて開き直してください。</li>
+</ul>
+</details>
+</section>
 <ul>
 <li><a href="https://play.google.com/store/apps/details?id=harissa.volumesoroe.app">Google Play で見る</a>（公開後に有効）</li>
 <li><a href="privacy.html">プライバシーポリシー</a>（<a href="privacy-en.html">Privacy Policy (English)</a>）</li>
